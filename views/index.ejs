@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/csv/stylesheets/style.css' />
+  </head>
+  <body>
+    
+    <% if (errors.length) { %>
+      <div class="alert alert-danger"><%= errors %></div>
+    <% } %>
+    <% if (messages.length) { %>
+      <div class="alert alert-success"><%= messages %></div>
+    <% } %>
+    <h1>Album List and Upload</h1>
+    <div class="panel panel-info csv-panel">
+      <div class="panel-body">
+        <h4>Upload a csv file of albums</h4>
+        <form method="POST" action="/csv/albums/upload" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="csvFile">File to upload:</label> 
+              <input type="file" name="csvFile" accept=".csv" />
+            </div>
+            <button type="submit" class="btn btn-success" value="Upload Albums">Upload Albums</button>
+        </form>
+        <hr />
+        <a href="/csv/albums/clear" >Destroy All Albums</a> |
+        <a href="/csv/data/MindspaceAlbums.csv">Mindspace Data</a> |
+        <a href="/csv/data/MOCK_DATA.csv">Large Mock Data</a>
+      </div>
+    </div>
+        
+    <h3><%= title %> (<%= albumCount %>)</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Artist</th>
+          <th>Album Name</th>
+          <th>Release Year &#9660;</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0; i < albumList.length; i++) { %>
+          <tr>
+            <td><%= albumList[i].artist %></td>
+            <td><%= albumList[i].albumName %></td>
+            <td><%= albumList[i].releaseYear %></td>
+            <td><%= albumList[i].rating %></td>
+          </tr>
+        <% } %>
+        <% if(albumList.length === 0) { %>
+          <tr>
+            <td colspan="4">No Albums Found</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <script type="text/javascript" src="/csv/javascripts/script.js"></script>
+  </body>
+</html>
