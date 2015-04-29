@@ -22,16 +22,18 @@ router.post('/albums/upload', [ multer({ dest: './uploads/'}), function(req, res
    if(req.files.csvFile.extension === "csv") {
      var stream = fs.createReadStream(req.files.csvFile.path);
    
-     console.log(req.files.csvFile);
+     //console.log(req.files.csvFile);
      
      var albums = [];
      
      var colNo = { artist: 0, album: 1, release: 2, rating: 3};
      
      var csvStream = csv
-        .parse()
+        .fromStream(stream, {ignoreEmpty: true})
         .on("data", function (data) {
-          albums.push({artist: data[colNo.artist], albumName: data[colNo.album], releaseYear: data[colNo.release], rating: data[colNo.rating]});
+          if(data.length) {
+            albums.push({artist: data[colNo.artist], albumName: data[colNo.album], releaseYear: data[colNo.release], rating: data[colNo.rating]});
+          }
         })
         .on("end", function () {
           albums.shift();
@@ -42,7 +44,7 @@ router.post('/albums/upload', [ multer({ dest: './uploads/'}), function(req, res
           res.redirect("/csv");
         });
       
-     stream.pipe(csvStream);
+     //stream.pipe(csvStream);
    } else {
     req.flash("error", "Invalid File Type");
     res.redirect("/csv");
