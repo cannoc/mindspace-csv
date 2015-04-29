@@ -1,6 +1,6 @@
 # CSV Importer
 
-## Takes a csv file of the format (Artist, Album, Release Year, Rating), adds them to a Mongo database and lists them in order of Release Year (desc)
+Takes a csv file of the format (Artist, Album, Release Year, Rating), adds them to a Mongo database and lists them in order of Release Year (desc)
 
 ## Setup
 
