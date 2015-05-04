@@ -1,2 +1,3 @@
 models/db.js
 uploads/*
+node_modules/*
