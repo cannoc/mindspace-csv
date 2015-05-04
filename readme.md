@@ -1,6 +1,15 @@
 # CSV Importer
 
-Takes a csv file of the format (Artist, Album, Release Year, Rating), adds them to a Mongo database and lists them in order of Release Year (desc)
+## Requirements
+
+1. The application should provide an interface to upload the CSV file
+2. The uploaded file should be parsed into a database (MySQL, Mongo, or Postgres – your choice)
+3. After upload, the application should render the new list of albums sorted by Release Year
+4. Create a README file with a section on next steps in your github repo. What features would you add?
+
+## Demo Application
+
+http://cannon.ws/csv
 
 ## Setup
 
@@ -12,10 +21,8 @@ Takes a csv file of the format (Artist, Album, Release Year, Rating), adds them 
 6. run: node bin/www
 
 ## Next Steps
-1. Instead of assuming the format will be the same attempt to match column names to expected names
-2. Depending on the users need and use cases, add more verification of valid csv data
+1. Attempt to match column names with expected columns
+2. Add more verification to uploaded files depending on customer's needs
 3. Add paging, sorting (client-side) and search functionality
 4. AJAX the whole thing and add loading spinners/bars to show status of upload
-5. Allow edit/delete on each record, possibly add multi-select to modify/delete multiple records
-6. Handle DB connection errors
-7. Confirmation messages when deleting records
+5. Allow edit on each record, possibly add multi-select to modify/delete multiple records

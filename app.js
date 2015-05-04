@@ -15,8 +15,6 @@ var app = express();
 var configDB = require('./models/db.js');
 mongoose.connect(configDB.url);
 
-var Album = require('./models/album.js');
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -28,6 +26,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser('secretString'));
 app.use(session({cookie: { maxAge: 60000 }}));
 app.use(flash());
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler

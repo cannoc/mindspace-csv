@@ -39,6 +39,7 @@
           <th>Album Name</th>
           <th>Release Year &#9660;</th>
           <th>Rating</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -48,6 +49,7 @@
             <td><%= albumList[i].albumName %></td>
             <td><%= albumList[i].releaseYear %></td>
             <td><%= albumList[i].rating %></td>
+            <td><form method="POST" action="/csv/albums/remove/<%= albumList[i]._id %>"><button class="btn btn-danger" type="submit">Delete</button></form></td>
           </tr>
         <% } %>
         <% if(albumList.length === 0) { %>
