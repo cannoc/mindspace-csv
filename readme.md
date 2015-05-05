@@ -26,3 +26,4 @@ http://cannon.ws/csv
 3. Add paging, sorting (client-side) and search functionality
 4. AJAX the whole thing and add loading spinners/bars to show status of upload
 5. Allow edit on each record, possibly add multi-select to modify/delete multiple records
+6. Confirmation messages for delete functions
