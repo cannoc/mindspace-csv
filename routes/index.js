@@ -46,9 +46,9 @@ router.post('/albums/upload', [ multer({ dest: './uploads/'}), function(req, res
           // Send them to MongoDB
           Album.collection.insert(albums, function (err) {
             if(err) throw err;
-          });                     
-          req.flash('messages', "Successfully added " + albums.length + " albums to the database.");
-          res.redirect("/csv");
+            req.flash('messages', "Successfully added " + albums.length + " albums to the database.");
+            res.redirect("/csv");
+          });
         });
       
    } else {
@@ -71,6 +71,7 @@ router.post('/albums/remove/:albumId', function(req,res,next) {
 router.get('/albums/clear', function(req, res, next) {
   Album.remove({}, function(err) {
     if(err) throw err;
+    req.flash("messages", "Successfully removed all albums from the database.");
     res.redirect('/csv');
   });
 });
